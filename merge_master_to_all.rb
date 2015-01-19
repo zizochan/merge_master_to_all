@@ -7,7 +7,7 @@ end
 
 def get_all_branches
   [].tap{|branches|
-    lines = open("| git branch -r | grep -v 'origin/master'")
+    lines = open('| git branch -r | grep -v "origin/master\|sandbox\|develop"')
     while !lines.eof
       branches.push lines.gets.chomp.lstrip.gsub(/origin\//, "")
     end
@@ -64,4 +64,5 @@ def main
   end
   print "COMPLETE!\n"
 end
+
 main
